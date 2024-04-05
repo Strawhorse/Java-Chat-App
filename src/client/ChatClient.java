@@ -15,7 +15,7 @@ public class ChatClient {
 
     private Socket socket = null;
 
-//   BufferedReader to accept messages written to the console
+//   BufferedReader to accept messages written to the console to send to server
     private BufferedReader inputConsole = null;
 
 //    Writer to send messages to server
@@ -25,6 +25,7 @@ public class ChatClient {
     private BufferedReader in = null;
 
 
+//    establish a connection to server at address and port
     public ChatClient(String address,int port) {
         try{
             socket = new Socket(address,port);

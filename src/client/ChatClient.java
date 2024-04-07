@@ -50,7 +50,7 @@ public class ChatClient {
         } catch (UnknownHostException e) {
             System.out.println("Unknown host connection: " + e.getMessage());;
         } catch (IOException e) {
-            System.out.println("Unexpected exception" + e);;
+            System.out.println("Unexpected exception " + e);;
         }
     }
 

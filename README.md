@@ -15,6 +15,13 @@ Two types of socket: ServerSocket - listen to incoming network requests, execute
 
 Good sources:
 Sockets and output streams: https://www.javatpoint.com/java-socket-getoutputstream-method
-finally keyword in try/catch block: https://www.javatpoint.com/finally-block-in-exception-handling#:~:text=Java%20finally%20block%20is%20a,the%20exception%20occurs%20or%20not.
+Finally keyword in try/catch block: https://www.javatpoint.com/finally-block-in-exception-handling#:~:text=Java%20finally%20block%20is%20a,the%20exception%20occurs%20or%20not.
 
+Finding all the properties of a class: https://stackoverflow.com/questions/50081856/how-can-i-get-class-parameters-of-class-file
+
+
+Next to do:
+
+Add a Constructor Parameter: Modify the constructor to accept a Consumer<String> parameter. This consumer will be called with incoming messages from the server.
+Handle Incoming Messages: Inside the startClient method, read messages from the server in a loop. For each message received, call the consumer passed in the constructor.
 

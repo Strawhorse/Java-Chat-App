@@ -37,7 +37,7 @@ public class ChatClientInterface extends JFrame {
         add(textField, BorderLayout.SOUTH);
 
 
-//        Now initialise and start the chat client interface
+//        The constructor initialises the ChatClient with the server's address and port and a method reference (this::onMessageReceived) to handle incoming messages.
 
         try{
             this.client = new ChatClient("127.0.0.1", 5000, this::onMessageReceived);

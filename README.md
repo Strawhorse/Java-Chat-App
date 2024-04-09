@@ -25,3 +25,6 @@ Next to do:
 Add a Constructor Parameter: Modify the constructor to accept a Consumer<String> parameter. This consumer will be called with incoming messages from the server.
 Handle Incoming Messages: Inside the startClient method, read messages from the server in a loop. For each message received, call the consumer passed in the constructor.
 
+Currently here: https://hackr.io/blog/how-to-build-a-java-chat-app#step-6-enhancing-the-chat-application-optional
+
+Bug-hunting

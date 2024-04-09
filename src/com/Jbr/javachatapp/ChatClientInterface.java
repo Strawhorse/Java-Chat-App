@@ -7,7 +7,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.lang.reflect.Field;
 
 public class ChatClientInterface extends JFrame {
 
@@ -38,20 +37,17 @@ public class ChatClientInterface extends JFrame {
 
 
 //        The constructor initialises the ChatClient with the server's address and port and a method reference (this::onMessageReceived) to handle incoming messages.
+//        https://www.geeksforgeeks.org/double-colon-operator-in-java/
 
         try{
             this.client = new ChatClient("127.0.0.1", 5000, this::onMessageReceived);
+            client.startChatClient();
 
 
-//          Want to be able to output the port number in the below error message so need to get all the class fields to find out which one it is
-            for (Field f: getClass().getDeclaredFields()) {
-                System.out.println("Field: " + f);
-            }
-
-            client.startClient();
         } catch (IOException e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error when connecting to the server", "Connection Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
         }
 
     }

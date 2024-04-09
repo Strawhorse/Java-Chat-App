@@ -20,7 +20,7 @@ public class ChatServer {
 
     public static void main(String[] args) throws IOException {
         ServerSocket serverSocket = new ServerSocket(5000);
-        System.out.println("Server listening on port 5000");
+        System.out.println("Server started. Waiting for clients...");
 
         while (true) {
             Socket clientSocket = serverSocket.accept();

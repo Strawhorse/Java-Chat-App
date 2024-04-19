@@ -56,17 +56,7 @@ public class ChatClient {
     public void sendMessage(String msg) {
         out.println(msg);
     }
-
-    public void startChatClient() {
-        new Thread(()-> {
-            try {
-                String line;
-                while((line = in.readLine())!=null) {
-                    onMessageReceived.accept(line);
-                }
-            }
-        })
-    }
+    
 
 
 //    main method to run client

@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.function.Consumer;
+import java.net.UnknownHostException;
 
 public class ChatClient {
 
@@ -13,45 +13,55 @@ public class ChatClient {
 //establish connection to server using a Socket
 //    listen to messages from server continuously
 
-    private Socket socket;
+    private Socket socket = null;
 
-//     This consumer will be called with incoming messages from the server
-    private Consumer<String> onMessageReceived;
+//   BufferedReader to accept messages written to the console to send to server 
+    private BufferedReader inputConsole = null;
 
 //    Writer to send messages to server
-    private PrintWriter out;
+    private PrintWriter out = null;
 
 //    BufferedReader to accept messages coming from the server for broadcast
-    private BufferedReader in;
-
+    private BufferedReader in = null;
 
 //    establish a connection to server at address and port
-    public ChatClient(String serverAddress,int serverPort, Consumer<String> onMessageReceived) throws IOException {
-        this.socket = new Socket(serverAddress,serverPort);
-        System.out.println("Connected to the chat server at port " + Integer.toString(serverPort));
-        this.out = new PrintWriter(socket.getOutputStream(), true);
-        this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        }
+    public ChatClient(String address,int port) {
+        try{
+            socket = new Socket(address,port);
+            System.out.println("Connected to the chat server at port " + Integer.toString(port));
 
+            inputConsole = new BufferedReader(new InputStreamReader(System.in));
+            out = new PrintWriter(socket.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-
-        public void sendMessage(String msgText) {
-        out.println(msgText);
-    }
-
-
-    public void startChatClient() {
-        new Thread(() -> {
-            try{
-                String line;
-                while((line = in.readLine()) != null) {
-                    onMessageReceived.accept(line);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
+//            looping through input text from client
+            String line = "";
+            while(!line.equals("exit")) {
+                line = inputConsole.readLine();
+                out.println(line);
+                System.out.println(in.readLine());
             }
-        });
+
+            socket.close();
+            inputConsole.close();
+            out.close();
+
+        } catch (UnknownHostException e) {
+            System.out.println("Unknown host connection: " + e.getMessage());;
+        } catch (IOException e) {
+            System.out.println("Unexpected exception" + e);;
+        }
     }
 
+    public void sendMessage(String msg) {
+        out.println(msg);
+    }
+    
+
+
+//    main method to run client
+public static void main(String[] args) {
+    ChatClient client = new ChatClient("127.0.0.1", 5000);
+}
 
 }

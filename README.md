@@ -31,5 +31,7 @@ Bug-hunting
 
 
 Update:
-Created a new package under com.Jbr.networkChat to test out some networking protocols on
+Created a new package under com.Jbr.networkChat to test out some networking protocols on a simple server/client setup
+
+
 

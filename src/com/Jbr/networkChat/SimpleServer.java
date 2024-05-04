@@ -1,0 +1,37 @@
+package com.Jbr.networkChat;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.nio.Buffer;
+
+public class SimpleServer {
+
+    public static void main(String[] args) throws IOException {
+
+
+        //    just echo back to client what it sends
+        ServerSocket serverSocket = new ServerSocket(5000);
+
+        //    once you have a server socket instance you can wait for the clients acceptance of the socket
+
+        Socket socket = serverSocket.accept();
+
+        System.out.println("Server now accepting client connections...");
+
+//        set up a buffered reader for the input from the client
+        BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+//      Set up output writer for the output to the client after being sent to the server
+        PrintWriter writer = new PrintWriter(socket.getOutputStream());
+
+        
+
+        socket.close();
+        serverSocket.close();
+
+    }
+
+}

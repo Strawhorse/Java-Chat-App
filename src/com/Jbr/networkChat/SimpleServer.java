@@ -11,12 +11,11 @@ public class SimpleServer {
 
     public static void main(String[] args) throws IOException {
 
-
         //    just echo back to client what it sends
         ServerSocket serverSocket = new ServerSocket(5000);
 
-        //    once you have a server socket instance you can wait for the clients acceptance of the socket
 
+        //    once you have a server socket instance you can wait for the clients acceptance of the socket
         Socket socket = serverSocket.accept();
 
         System.out.println("Server now accepting client connections...");
@@ -24,14 +23,22 @@ public class SimpleServer {
 //        set up a buffered reader for the input from the client
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-//      Set up output writer for the output to the client after being sent to the server
-        PrintWriter writer = new PrintWriter(socket.getOutputStream());
+//      Set up output writer for the output to the client after being sent to the server; and autoflush = true
+        PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
 
+//        listen for input
+        while (true) {
+            String stringToBeEchoed = reader.readLine();
+
+            System.out.println("Server received the text: " + stringToBeEchoed);
+
+            if(stringToBeEchoed.equals("exit")){
+                break;
+            }
+
+            writer.println("Message back from server: " + stringToBeEchoed);
+        }
         
-
-        socket.close();
-        serverSocket.close();
-
     }
 
 }

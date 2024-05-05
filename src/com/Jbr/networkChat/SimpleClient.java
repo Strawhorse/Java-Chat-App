@@ -30,6 +30,7 @@ public class SimpleClient {
             requestString = scanner.nextLine();
             writer.println(requestString);
 
+
 //            check if response came back from server
             if ((!requestString.equals("exit"))) {
                 try {

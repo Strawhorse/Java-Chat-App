@@ -28,3 +28,10 @@ Handle Incoming Messages: Inside the startClient method, read messages from the 
 Currently here: https://hackr.io/blog/how-to-build-a-java-chat-app#step-6-enhancing-the-chat-application-optional
 
 Bug-hunting
+
+
+Update:
+Created a new package under com.Jbr.networkChat to test out some networking protocols on a simple server/client setup
+
+
+

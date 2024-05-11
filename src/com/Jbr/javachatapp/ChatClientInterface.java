@@ -45,6 +45,7 @@ public class ChatClientInterface extends JFrame {
 
 
         } catch (IOException e) {
+            //noinspection CallToPrintStackTrace
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error when connecting to the server", "Connection Error", JOptionPane.ERROR_MESSAGE);
             System.exit(1);

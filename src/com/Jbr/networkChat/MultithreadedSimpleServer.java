@@ -17,13 +17,13 @@ public class MultithreadedSimpleServer {
 
                 Socket socket = serverSocket.accept();
 
+                socket.setSoTimeout(20000);
+
                 System.out.println("Server now accepting client connections...");
 
                 BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
                 PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
-
-                socket.setSoTimeout(20000);
 
                 while (true) {
                     String stringToBeEchoed = reader.readLine();

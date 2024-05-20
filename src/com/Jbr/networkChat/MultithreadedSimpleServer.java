@@ -45,6 +45,7 @@ public class MultithreadedSimpleServer {
             while (true) {
                 String stringToBeEchoed = reader.readLine();
 
+                System.out.println("-------------------------------------");
                 System.out.println("Server received the text: " + stringToBeEchoed);
 
                 if (stringToBeEchoed.equals("exit")) {

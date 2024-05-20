@@ -15,16 +15,25 @@ public class MultithreadedSimpleServer {
 
 
         while(true) {
+
             Socket socket = serverSocket.accept();
 
             System.out.println("Server now accepting client connections...");
-
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
 
             PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
 
+            socket.setSoTimeout(20000);
+
+//        set up a buffered reader for the input from the client
+            BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+//      Set up output writer for the output to the client after being sent to the server; and autoflush = true
+            PrintWriter writer = new PrintWriter(socket.getOutputStream(), true);
+
+//        listen for input
 
             while (true) {
                 String stringToBeEchoed = reader.readLine();
@@ -40,5 +49,6 @@ public class MultithreadedSimpleServer {
         }
 
     }
+
 
 }

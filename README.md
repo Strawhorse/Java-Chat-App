@@ -8,7 +8,7 @@ Java has a Socket class which represents a socket
 Two types of socket: ServerSocket - listen to incoming network requests, execute actions; Socket - communication endpoints between two applications
 2. Setup: (a) Server - Create a ServerSocket and give it a port to monitor. Use accept() method to await a client connection. After connecting to a client, the server can interact with client using the above Socket object that the accept() method provides.
    (b) Client - also initialise a Socket object with the server hostname and port number to connect. Client can use this Socket object to communicate with the server.
-   (c) Front end
+
 
 
 
@@ -19,6 +19,7 @@ Finally keyword in try/catch block: https://www.javatpoint.com/finally-block-in-
 
 Finding all the properties of a class: https://stackoverflow.com/questions/50081856/how-can-i-get-class-parameters-of-class-file
 
+Trying with resources: https://www.baeldung.com/java-try-with-resources
 
 Next to do:
 
